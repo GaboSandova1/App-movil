@@ -1,23 +1,39 @@
 import { StatusBar} from "expo-status-bar";
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+// import { RootStackParamList } from "../types"; // Adjust the path to where your navigation types are defined
 
 // Imagenes PNG
 const icon = require('../assets/images/user_icon.png');
-const background = require('../assets/images/fondoPantalla.png');
+const background = require('../assets/images/fondo.png');
 
 // Iconos SVG
 import Option from "../components/Icons/Option";
 import BackBotton from "../components/Icons/backBotton";
+// import Perfil from "../components/Icons/profil";
 
 
+import { StackNavigationProp } from '@react-navigation/stack';
+type RootStackParamList = {
+  Inicio: undefined;
+  Profile: undefined;
+  // Add other routes here if necessary
+};
 
-// Componente Perfil
-export default function Perfil() {
+
+type PerfilNavigationProp = StackNavigationProp<RootStackParamList, 'Profile'>;
+
+
+export default function Profile() {
+  const navigation = useNavigation<PerfilNavigationProp>();
   return (
     <ImageBackground source={background} style={styles.background}>
       <View style={styles.container}>
 
+      <TouchableOpacity onPress={() => navigation.navigate('Inicio')}>
         <BackBotton style={{ marginLeft: 20, marginTop: 60 }}/>
+      </TouchableOpacity>
+
         <Option style={{ marginLeft: 325, marginTop: -30, transform: [{ scale: 0.8 }] }}/>
 
         <View style={{alignItems: "center", justifyContent: "center", marginTop: -20}}>
