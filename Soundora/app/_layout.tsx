@@ -2,6 +2,8 @@ import { Stack } from "expo-router";
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
+import { ProfileImageProvider } from "../context/ProfileImageContext";
+
 
 import { HapticTab } from '@/components/HapticTab';
 import { Colors } from '@/components/Colors';
@@ -22,60 +24,69 @@ import Album from "../components/Icons/Album";
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   return (
+    <ProfileImageProvider>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+          tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
           headerShown: false,
-          tabBarButton: HapticTab,
-          // tabBarBackground: TabBarBackground,
           tabBarStyle: Platform.select({
-        ios: {
-          // Use a transparent background on iOS to show the blur effect
-          position: 'absolute',
-          backgroundColor: '#000000', 
-          opacity: 1,
-        },
-        default: {
-          backgroundColor: '#191919', 
-          // opacity: 0.8,
-        },
+            ios: {
+              position: "absolute",
+              backgroundColor: "#000000",
+              opacity: 1,
+            },
+            default: {
+              backgroundColor: "#191919",
+            },
           }),
-        }}>
+        }}
+      >
         <Tabs.Screen
           name="Inicio"
           options={{
-        title: 'Inicio',
-        tabBarIcon: ({ color }) => <HomeIcon size={25} name="house.fill" color={color} />,
+            title: "Inicio",
+            tabBarIcon: ({ color }) => (
+              <HomeIcon size={25} name="house.fill" color={color} />
+            ),
           }}
         />
         <Tabs.Screen
           name="album"
           options={{
-        title: 'Album',
-        tabBarIcon: ({ color }) => <Album size={28} name="paperplane.fill" color={color} />,
+            title: "Album",
+            tabBarIcon: ({ color }) => (
+              <Album size={28} name="paperplane.fill" color={color} />
+            ),
           }}
         />
         <Tabs.Screen
           name="search"
           options={{
-        title: 'Buscar',
-        tabBarIcon: ({ color }) => <Search size={28} name="magnifyingglass" color={color} />,
+            title: "Buscar",
+            tabBarIcon: ({ color }) => (
+              <Search size={28} name="magnifyingglass" color={color} />
+            ),
           }}
         />
         <Tabs.Screen
           name="playList"
           options={{
-        title: 'Play List',
-        tabBarIcon: ({ color }) => <PlayList size={28} name="music.note.list" color={color} />,
+            title: "Play List",
+            tabBarIcon: ({ color }) => (
+              <PlayList size={28} name="music.note.list" color={color} />
+            ),
           }}
         />
         <Tabs.Screen
           name="Profile"
           options={{
-        title: 'Perfil',
-        tabBarIcon: ({ color }) => <Profil size={28} name="magnifyingglass" color={color} />,
+            title: "Perfil",
+            tabBarIcon: ({ color }) => (
+              <Profil size={28} name="magnifyingglass" color={color} />
+            ),
           }}
         />
       </Tabs>
-    );;
+    </ProfileImageProvider>
+  );
 }

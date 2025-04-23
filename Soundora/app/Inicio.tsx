@@ -2,6 +2,7 @@ import { StatusBar} from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, ScrollView } from "react-native";
 import { Box } from "react-native-feather";
 import { useNavigation } from '@react-navigation/native';
+import { useProfileImage } from "../context/ProfileImageContext";
 
 const user = require('../assets/images/user_icon.png');
 const background = require('../assets/images/fondo.png');
@@ -25,6 +26,7 @@ type InicioNavigationProp = StackNavigationProp<RootStackParamList, 'Inicio'>;
 
 // Componente Inicio
 export default function Inicio() {
+  const { profileImage } = useProfileImage(); // Obtiene la imagen de perfil del contexto
   const navigation = useNavigation<InicioNavigationProp>();
   return (
     <ImageBackground source={background} style={styles.background}>
@@ -32,9 +34,10 @@ export default function Inicio() {
 
         <View style={{ padding: 20,}}>
           <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-            <Image source={user} style={{
+            <Image source={profileImage} style={{
             width: 40, 
             height: 40,
+            borderRadius: 20,
             transform: [{ translateY: 20 }, { translateX: 10 }],
             }}
             />
