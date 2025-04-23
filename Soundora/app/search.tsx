@@ -1,6 +1,6 @@
 import { StatusBar} from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ImageBackground, TextInput, TouchableOpacity } from "react-native";
-
+import DeezerPlayer from "../components/DeezerPlayer";
 
 // Imagenes PNG
 const background = require('../assets/images/fondo.png');
@@ -38,7 +38,7 @@ export default function Buscar() {
         
 
         <TouchableOpacity onPress={() => navigation.navigate('Inicio')}>
-          <BackBotton style={{ marginLeft: 20, marginTop: 40 }}/>
+          <BackBotton style={{ marginLeft: 20, marginTop: 60 }}/>
         </TouchableOpacity>
 
 
@@ -49,21 +49,14 @@ export default function Buscar() {
 
         {/* Buscador */}
         <View style={styles.containerBuscador}>
-        
 
-
-          <TextInput
-            style={[styles.searchInput, styles.boxShadow]}
-            placeholder="¿Que te gustaria escuchar?"
-            placeholderTextColor="#888"
-          />
-
-          <Search style={{ marginLeft: 20, marginTop: 40 }}/>
-          
+          <View style={{flexDirection: "row", alignItems: "center", marginTop: 20, marginLeft: 20}}>
+            <DeezerPlayer />
+          </View>
           
         </View>
 
-        <Text style={styles.TextSearch}>Recientes</Text>
+        {/* <Text style={styles.TextSearch}>Recientes</Text>
 
 
         <View style={styles.Recientes}>
@@ -79,7 +72,7 @@ export default function Buscar() {
             <Image source={artist6} style={styles.RecientesImage} />
             <Text style={styles.TextRecientes}>Cancion 3</Text>
           </View>
-        </View>
+        </View> */}
           
 
         
@@ -117,6 +110,7 @@ const styles = StyleSheet.create({
 
   // Estilos Texto Buscador
   containerBuscador: {
+    marginLeft: -10,
     flexDirection: "row",
     margin: 30,
     alignItems: "center",
@@ -154,7 +148,8 @@ const styles = StyleSheet.create({
     fontSize: 21,
     fontWeight: "bold",
     color: "#fff",
-    transform: [{ translateX: 20 }],
+    transform: [{ translateX: 25 }], 
+    marginTop: -35,
   },
 
   Recientes: {
