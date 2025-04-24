@@ -1,16 +1,11 @@
-import { Stack } from "expo-router";
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
 import { ProfileImageProvider } from "../context/ProfileImageContext";
 
-
-import { HapticTab } from '@/components/HapticTab';
 import { Colors } from '@/components/Colors';
-import { IconSymbol } from '@/components/IconSymbol.ios';
-import TabBarBackground from '@/components/TabBarBackground.ios';
-import { useColorScheme } from '@/components/useColorScheme';
 
+import { useColorScheme } from '@/components/useColorScheme';
 
 
 import Search from "../components/Icons/Search";

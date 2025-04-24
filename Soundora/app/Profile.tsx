@@ -1,41 +1,21 @@
 import { StatusBar} from "expo-status-bar";
-import { StyleSheet, Text, View, Image, Button, Modal, ImageBackground, TouchableOpacity, ScrollView, TextInput } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, Text, View, Image, Modal, ImageBackground, TouchableOpacity, ScrollView, TextInput } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { useProfileImage } from "../context/ProfileImageContext"; // Asegúrate de que la ruta sea correcta
 
-
-// import { RootStackParamList } from "../types"; // Adjust the path to where your navigation types are defined
-
 // Imagenes PNG
-const icon = require('../assets/images/user_icon.png');
 const background = require('../assets/images/fondo.png');
 
 // Iconos SVG
 import Option from "../components/Icons/Option";
 import BackBotton from "../components/Icons/backBotton";
-// import Perfil from "../components/Icons/profil";
 
 
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useState } from "react";
-// import * as SQLite from 'expo-sqlite';
-type RootStackParamList = {
-  Inicio: undefined;
-  Profile: undefined;
-  // Add other routes here if necessary
-};
 
-
-// Crear o abrir la base de datos
-// const db = SQLite.openDatabaseAsync("registro-db");
-
-
-type PerfilNavigationProp = StackNavigationProp<RootStackParamList, 'Profile'>;
-
+import { router } from "expo-router";
 
 export default function Profile() {
-  const navigation = useNavigation<PerfilNavigationProp>();
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para alternar entre login y perfil
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -88,7 +68,7 @@ export default function Profile() {
     return (
       <ImageBackground source={background} style={styles.background}>
         <View style={styles.loginContainer}>
-          <Text style={styles.title}>Login</Text>
+          <Text style={styles.title}>Iniciar Sesion</Text>
           <View style={styles.inputBox}>
             <TextInput
               style={[styles.input, styles.inputWithEffect]}
@@ -111,7 +91,7 @@ export default function Profile() {
           </View>
           <View style={styles.rememberForgot}>
             <TouchableOpacity>
-              <Text style={styles.forgotText}>¿Olvidaste la contraseña?</Text>
+              <Text style={styles.forgotText} onPress={() => alert("Pendejo")}>¿Olvidaste la contraseña?</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={[styles.loginButton, styles.buttonWithEffect]} onPress={handleLogin}>
@@ -131,22 +111,6 @@ export default function Profile() {
     );
   }
 
-  // Si el usuario está autenticado, muestra la pantalla de perfil
-  // Aquí puedes agregar la lógica para mostrar la información del perfil
-  // Por ejemplo, puedes usar un estado para almacenar los datos del usuario
-  // y mostrarlos en la pantalla de perfil
-  // const userData = {
-  //   username: "Benito Camela",
-  //   followers: 0,
-  //   following: 0,
-  //   recentActivity: [
-  //     "Seguiste a Juanito",
-  //     "Te gustó una canción de Maria",
-  //     "Completaste el álbum de Los Piojos",
-  //   ],
-  // };
-
-
 
 
 
@@ -156,8 +120,8 @@ export default function Profile() {
     <ImageBackground source={background} style={styles.background}>
       <View style={styles.container}>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Inicio')}>
-        <BackBotton style={{ marginLeft: 20, marginTop: 60 }}/>
+      <TouchableOpacity onPress={() => router.back()}>
+        <BackBotton style={{ marginLeft: 20, marginTop: 50 }} />
       </TouchableOpacity>
 
       <TouchableOpacity

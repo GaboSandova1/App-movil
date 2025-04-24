@@ -1,12 +1,10 @@
 import { StatusBar} from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, ScrollView } from "react-native";
-import { Box } from "react-native-feather";
 import { useNavigation } from '@react-navigation/native';
 import { useProfileImage } from "../context/ProfileImageContext";
-
 import InicioScreen from "../components/InicioScreen";
 
-// const user = require('../assets/images/user_icon.png');
+// Imagen de fondo
 const background = require('../assets/images/fondo.png');
 
 
@@ -30,15 +28,19 @@ export default function Inicio() {
       <View style={styles.container}>
 
         <View style={{ padding: 20,}}>
+
+          {/* Imagen del perfil de usuario */}
           <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
             <Image source={profileImage} style={{
-            width: 40, 
-            height: 40,
-            borderRadius: 20,
-            transform: [{ translateY: 38 }, { translateX: 10 }],
-            }}
+              width: 40, 
+              height: 40,
+              borderRadius: 20,
+              transform: [{ translateY: 38 }, { translateX: 10 }],
+              }}
             />
           </TouchableOpacity>
+
+            {/* Titulo */}
             <Text style={{ 
               marginTop: -15, 
               fontSize: 21, 
@@ -51,13 +53,9 @@ export default function Inicio() {
         </View>
 
         <ScrollView style={styles.container}>
-          {/* Recomendados */}
           
+            {/* Contenido de la pantalla de inicio */}
             <InicioScreen />
-
-
-
-
 
           <StatusBar style="auto" />
         </ScrollView>
@@ -67,7 +65,7 @@ export default function Inicio() {
 }
 
 
-
+// Estilos
 const styles = StyleSheet.create({
   background: {
     flex: 1,
@@ -84,204 +82,5 @@ const styles = StyleSheet.create({
   scrollContainer: {
     marginTop: 10,
   },
-
-
-
-  // // Apartado de Recomendados
-
-  // // Recomendados Izquierda
-  // ContainerRecomendados: {
-  //   flexDirection: "column",
-  //   alignItems: "flex-start",
-  //   marginTop: 10,
-  //   marginBottom: -190, 
-  // },
-  // ImageRecomendados: {
-  //   width: 40,
-  //   height: 40,
-  // },
-  // TextRecomendados: {
-  //   marginTop: 10,
-  //   color: "#fff",
-  //   fontWeight: "bold",
-  //   transform: [{ translateX: 10 }],
-  // },
-  // BoxRecomendados: {
-  //   flexDirection: "row",
-  //   justifyContent: "flex-start",
-  //   marginTop: 4,
-  //   backgroundColor: "#333",
-  //   padding: 11,
-  //   paddingRight: 63,
-  //   borderRadius: 10,
-  //   position: "relative",
-  //   transform: [{ translateX: 20 }],
-  // },
-
-
-  // // Recomendados Derecha
-  // Box2Recomendados: {
-  //   flexDirection: "row",
-  //   justifyContent: "flex-start",
-  //   marginTop: 4,
-  //   backgroundColor: "#333",
-  //   padding: 11,
-  //   paddingRight: 63,
-  //   borderRadius: 10,
-  //   position: "relative",
-  //   transform: [{ translateX: 185 }, { translateY: -200 }],
-  // },
-
-
-  // Text2Recomendados: {
-  //   marginTop: 10,
-  //   color: "#fff",
-  //   fontWeight: "bold",
-  //   transform: [{ translateX: 10 }],
-  // },
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // // Apartado de Conoce Artistas
-  // recommendationsContainer: {
-  //   flexDirection: "row",
-  //   justifyContent: "space-around",
-  //   marginTop: 10,
-  //   marginStart: 20,
-  // },
-  // recommendationBox: {
-  //   alignItems: "flex-start",
-  //   width: 100,
-  //   marginHorizontal: 6, 
-  // },
-  // recommendationImage: {
-  //   width: 100,
-  //   height: 100,
-  // },
-  // recommendationText: {
-  //   marginTop: 5,
-  //   color: "#fff",
-  //   fontWeight: "bold",
-  //   transform: [{ translateX: 20 }],
-  // },
-
-
-
-
-
-
-
-
-  
-  // // Apartado de Tendencia
-  // TendenciaContainer: {
-  //   flexDirection: "row",
-  //   justifyContent: "space-around",
-  //   marginTop: 10,
-  //   marginStart: 10,
-  // },
-
-  // TendenciaImage: {
-  //   width: 110,
-  //   height: 110,
-    
-  // },
-
-  // tendenciaBox: {
-  //   alignItems: "flex-start",
-  //   width: 100,
-  //   marginHorizontal: 12, 
-  // },
-
-  // TendenciaText: {
-  //   marginTop: 10,
-  //   color: "#fff",
-  //   fontWeight: "bold",
-  //   transform: [{ translateX: 23 }],
-  // },
-
-
-
-
-
-
-
-
-  // // Apartado de Sigue Escuchando
-  // SigueContainer: {
-  //   flexDirection: "row",
-  //   justifyContent: "space-around",
-  //   marginTop: 10,
-  //   marginStart: 10,
-  // },
-
-  // SigueImage: {
-  //   width: 110,
-  //   height: 110,
-  // },
-
-  // sigueBox: {
-  //   alignItems: "flex-start",
-  //   width: 100,
-  //   marginHorizontal: 12, 
-  // },
-
-  // SigueText: {
-  //   marginTop: 10,
-  //   color: "#fff",
-  //   fontWeight: "bold",
-  //   transform: [{ translateX: 23 }],
-  // },
-
-
-
-
-
-
-
-
-  // // Apartado de Albumes y sencillos populares
-  // AlbumesContainer: {
-  //   flexDirection: "row",
-  //   justifyContent: "space-around",
-  //   marginTop: 10,
-  //   marginStart: 10,
-  // },
-
-  // AlbumesImage: {
-  //   width: 110,
-  //   height: 110,
-  // },
-
-  // AlbumesBox: {
-  //   alignItems: "flex-start",
-  //   width: 100,
-  //   marginHorizontal: 12, 
-  // },
-
-  // AlbumesText: {
-  //   marginTop: 10,
-  //   color: "#fff",
-  //   fontWeight: "bold",
-  //   transform: [{ translateX: 23 }],
-  // },
-
-
-
-
-
-
-
-
 
 });
